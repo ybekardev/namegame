@@ -87,16 +87,5 @@ public class LoginPage {
             assert (vl.equals("0"));
 
         }
-
-
-
-
-
-
-
     }
-
-
-
-
 }
