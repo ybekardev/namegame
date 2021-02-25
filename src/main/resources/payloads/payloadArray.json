@@ -1,0 +1,11 @@
+{
+  "customer": [{
+    "fullName": "Emily Jenkins",
+    "id": "44521",
+    "age": 27,
+    "consumption_info": {
+      "last_buy": "2012-04-23",
+      "fav_product": "Coke"
+    }
+  }]
+}
