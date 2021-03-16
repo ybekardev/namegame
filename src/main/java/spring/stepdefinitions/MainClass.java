@@ -9,31 +9,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 @PropertySources({
-        @PropertySource("classpath:configuration.properties"),
-        @PropertySource("classpath:bar.properties")
+        @PropertySource("classpath:configuration.properties")
+//        ,@PropertySource("classpath:bar.properties")
 })
 public class MainClass {
 
-    @Value( "${jdbc.url}" )
+    @Value("${jdbc.url}" )
     private  String jdbc;
 
-    // https://www.techiedelight.com/read-values-from-application-properties-file-in-spring-boot/
     @Autowired
-    private  Environment environment;
+    private Environment environment;
 
     public String test(){
-        return environment.getProperty("jdbc.url");
+        return this.jdbc;
     }
-
-    public MainClass(){
-
-    }
-    public static void main(String[] args) {
-
-        MainClass mainClass = new MainClass();
-        System.out.println(mainClass.environment.getProperty("jdbc.url"));
-        //System.out.println(mainClass.jdbc);
-    }
-
 
 }
