@@ -15,7 +15,11 @@ import org.springframework.stereotype.Component;
 public class MainClass {
 
     @Value("${jdbc.url}" )
-    private  String jdbc;
+    private String jdbc;
+
+    @Value("${testing}")
+    private String testing;
+
 
     @Autowired
     private Environment environment;
@@ -24,4 +28,7 @@ public class MainClass {
         return this.jdbc;
     }
 
+    public String conf() {
+        return this.testing;
+    }
 }

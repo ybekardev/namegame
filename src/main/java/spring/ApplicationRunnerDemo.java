@@ -13,8 +13,8 @@ import spring.stepdefinitions.MainClass;
 @CucumberOptions(
         features = {"src/main/resources/features"},
         glue = {"spring.stepdefinitions"},
-        tags = {"@namegame"},
-        dryRun = true,
+        tags = {"@demo"},
+        dryRun = false,
         plugin = {
                 "pretty",
                 "html:target/cucumber-report",
@@ -23,10 +23,9 @@ import spring.stepdefinitions.MainClass;
         }
 )
 @SpringBootApplication
-public class ApplicationRunnerDemo implements CommandLineRunner {
+public class ApplicationRunnerDemo implements CommandLineRunner{
 	 public static void main(String[] args) {
-	         SpringApplication.run(ApplicationRunnerDemo.class, args);
-
+		SpringApplication.run(ApplicationRunnerDemo.class, args);
 	 }
 
 	 @Autowired
@@ -38,5 +37,6 @@ public class ApplicationRunnerDemo implements CommandLineRunner {
 		System.out.println("run method invoked");
 		String test = mainClass.test();
 		System.out.println(test);
+		System.out.println(mainClass.conf());
 	}
 }

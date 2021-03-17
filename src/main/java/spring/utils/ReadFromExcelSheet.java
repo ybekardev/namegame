@@ -1,21 +1,29 @@
 package spring.utils;
 
 import groovy.util.OrderBy;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
  import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.util.Iterator;
 
 
 
 public class ReadFromExcelSheet {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
+        columnData();
+    }
+
+    public static void readAllCellData() {
         try
         {
             FileInputStream file = new FileInputStream(new File("src/main/resources/demo.xlsx"));
@@ -58,6 +66,21 @@ public class ReadFromExcelSheet {
         }
     }
 
+
+    // https://www.stackchief.com/blog/How%20to%20read%20a%20CSV%20file%20in%20Java%20%7C%20with%20examples
+
+    public static void columnData() {
+        try(
+                BufferedReader br = new BufferedReader(new FileReader("src/main/resources/MOCK_DATA.csv"));
+                CSVParser parser = CSVFormat.DEFAULT.withDelimiter(',').withHeader().parse(br);
+        ) {
+            for(CSVRecord record : parser) {
+                System.out.println(record.get("first_name"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     // https://www.e-iceblue.com/Knowledgebase/Java/Spire.XLS-for-Java/Program-Guide/Data/Sort-Excel-Data-in-Java.html
     // https://dev.to/eiceblue/sort-data-in-excel-in-java-1cc3
